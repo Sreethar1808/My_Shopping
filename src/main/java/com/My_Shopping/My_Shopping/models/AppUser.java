@@ -15,7 +15,7 @@ public class AppUser {
     @Column(unique = true, nullable = false)
     String email;
     @Column(nullable = false)
-    String Password;
+    String password;
     String usertype;
     @Column(unique = true, length = 10)
     Long phonenumber;
@@ -27,7 +27,7 @@ public class AppUser {
         this.id = id;
         this.name = name;
         this.email = email;
-        Password = password;
+        this.password = password;
         this.usertype = usertype;
         this.phonenumber = phonenumber;
     }
@@ -57,11 +57,11 @@ public class AppUser {
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getUsertype() {
