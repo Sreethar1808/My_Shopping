@@ -78,6 +78,7 @@ public class Product {
     }
 
     public void setAppUser(AppUser appUser) {
+
         this.appUser = appUser;
     }
 
