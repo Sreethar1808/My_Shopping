@@ -7,7 +7,6 @@ import com.My_Shopping.My_Shopping.Repository.OrderRepository;
 import com.My_Shopping.My_Shopping.models.AppUser;
 import com.My_Shopping.My_Shopping.models.OrderTable;
 import com.My_Shopping.My_Shopping.models.Product;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +25,9 @@ public class BuyerService {
 
     @Autowired
     OrderRepository orderRepository;
+
+    @Autowired
+    MailService mailService;
     public BillDTO placeorder(List<OrderDetailsDTO> orderdetails, UUID id)
     {
         AppUser user = userService.getUserId(id);
@@ -78,7 +80,7 @@ public class BuyerService {
         orderRepository.save(orderTable);
         billDTO.setBillid(orderTable.getOrderid());
 
-
+        mailService.sendmail("Hey order got placed",user.getEmail(),"Hey Congralation Order got placed");
         return billDTO;
     }
 }
