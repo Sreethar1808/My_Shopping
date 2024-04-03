@@ -55,6 +55,10 @@ public class ProductService {
         return product_dtos;
     }
 
+    public void updateProductQuantity(UUID productid, int quantity)
+    {
+        productRepository.updateProductQuantity(productid,quantity);
+    }
     public List<Product_DTO> searachByCategory(String category)
     {
         List<Product> products=productRepository.getProductByCategory(category);
