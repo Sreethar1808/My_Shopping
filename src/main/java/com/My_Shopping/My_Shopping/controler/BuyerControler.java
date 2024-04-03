@@ -1,5 +1,6 @@
 package com.My_Shopping.My_Shopping.controler;
 
+import com.My_Shopping.My_Shopping.ProductDTO.BillDTO;
 import com.My_Shopping.My_Shopping.ProductDTO.OrderDetailsDTO;
 import com.My_Shopping.My_Shopping.models.OrderTable;
 import com.My_Shopping.My_Shopping.service.BuyerService;
@@ -16,7 +17,7 @@ public class BuyerControler {
     @Autowired
     BuyerService buyerService;
     @PostMapping("/placeOrder")
-    public OrderTable placeorder(@RequestBody List<OrderDetailsDTO> orders, @RequestParam UUID id)
+    public BillDTO placeorder(@RequestBody List<OrderDetailsDTO> orders, @RequestParam UUID id)
     {
         return buyerService.placeorder(orders,id);
     }

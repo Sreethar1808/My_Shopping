@@ -1,9 +1,7 @@
 package com.My_Shopping.My_Shopping.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,6 +10,7 @@ import java.util.UUID;
 public class OrderTable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     UUID orderid;
     int toalprice;
     int totalQuantity;
@@ -19,7 +18,7 @@ public class OrderTable {
     @ManyToOne
     AppUser appUser;
 
-    @OneToMany
+ @OneToMany//(mappedBy = "orderid", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Product> products;
     String status;
     String paymentmode;
