@@ -1,5 +1,6 @@
 package com.My_Shopping.My_Shopping.service;
 
+import com.My_Shopping.My_Shopping.expections.MailNotSend;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -24,7 +25,7 @@ public class MailService {
         }
         catch (Exception e)
         {
-
+              throw new MailNotSend("Mail not Send try again later");
         }
     }
 }
